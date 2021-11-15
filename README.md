@@ -1,2 +1,2 @@
-# Latex_Prezent-cio
+# Latex_Prezentacio
 Latex prezentáció xcolor packageról.
