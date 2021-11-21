@@ -1,10 +1,13 @@
-\documentclass[aspectratio=1610]{beamer}
+\documentclass[aspectratio=1610,dvipsnames,xcolor=table]{beamer}
 
 \setbeamersize{text margin left=3mm,text margin right=3mm} 
-
 \usepackage{t1enc}
 \usepackage[magyar]{babel}
-\usepackage{xcolor}
+\usepackage{subcaption}
+\usepackage[export]{adjustbox}
+\usepackage[table]{xcolor}
+
+
 
 \definecolor{szin1}{rgb}{0.5, 0.188, 0.478}
 \definecolor{szin2}{RGB}{196, 203, 133}
@@ -66,13 +69,121 @@
                     \item \onslide<4->gray    
                 \end{enumerate}
                 Például:
-                \item \onslide<5->\verb!\definecolor{szin1}{rgb}{0.500, 0.188, 0.478}! \hfill \textcolor{szin1}{Szín1}
-                \item \onslide<5->\verb!\definecolor{szin2}{RGB}{196, 203, 133}! \hfill \textcolor{szin2}{Szín2}
+                \item \onslide<5->\verb!\definecolor{szin1}{rgb}{0.500, 0.188, 0.478}! 						\hfill \textcolor{szin1}{Szín1}
+                \item \onslide<5->\verb!\definecolor{szin2}{RGB}{196, 203, 133}! \hfill 					\textcolor{szin2}{Szín2}
                 \item \onslide<5->\verb!\definecolor{szin3}{cmyk}{0, 0.7771, 0.5437, 0.8656}! \hfill \textcolor{szin3}{Szín3}
-                \item \onslide<5->\verb!\definecolor{szin4}{gray}{0.5}! \hfill \textcolor{szin4}{Szín4}
+                \item \onslide<5->\verb!\definecolor{szin4}{gray}{0.5}! \hfill 								\textcolor{szin4}{Szín4}
             \end{itemize}
-            
+                                                        
         \end{minipage} 
         
     \end{frame}
+    
+  
+\begin{frame}[fragile]{Használat}
+	\begin{center}
+	
+ 		\onslide<1->\verb!A \usepackage[dvipsnames]{xcolor}! beimplementálásával eltudjuk 			érni a csomagban használható összes színt.
+ 		\noindent
+		{\color{Dandelion} \rule{\linewidth}{1mm}}
+		\end{center}
+ 			\begin{itemize}
+ 				\color{JungleGreen}
+ 				\onslide<2->\item Szín példa 1
+ 				\color{RubineRed}
+ 				\onslide<3->\item Szín példa 2
+ 			\end{itemize}
+
+ 	\onslide<4->\begin{block}{Megjegyzés}
+ 		Az esetben ha már betöltöttük az \textbf{xcolor} csomagot akkor a 'dvipsnames' 				szócskát a documentclassban megadva a package implementálása nélkül is gond 				nélkül tudjuk használni a csomagban elérhető színeket
+	\end{block} 	
+	
+	\onslide<5->\begin{exampleblock}{Példa}
+    {
+       \verb!\documentclass[aspectratio=1610,dvipsnames]{beamer}!
+    }
+    \end{exampleblock}
+	
+	
+\end{frame}
+
+\begin{frame}[fragile]{Használat}
+\begin{center}
+Ha minden rendben betöltődött akkor pedig a következő példa képeken és kód részleteken láthatjuk,hogy hogyan néz ki az \textbf{xcolor package használata}
+\noindent
+{\color{Dandelion} \rule{\linewidth}{1mm}}
+\end{center}
+	
+	\begin{figure}[H]
+			 \onslide<2->\includegraphics[scale=0.8]{img/itemszinezes.png}
+			 \onslide<2->\caption{Itemek színezése}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]{Használat}
+
+\begin{figure}[H]
+\onslide<1->\includegraphics[scale=0.9]{img/itemszinezes2.1.png} 
+\onslide<1->\caption{Saját szín definiálás}
+\onslide<2->\includegraphics[scale=0.9]{img/itemszinezes2.png}
+\onslide<2->\caption{Saját szín használata}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Táblázat színezés}
+\begin{center}
+
+A \verb!\usepackage[table]{xcolor}! package implementálása után tudunk táblázatban is hasonló dolgokat alkotni.
+\noindent
+{\color{Dandelion} \rule{\linewidth}{1mm}}
+\end{center}
+
+\vfill
+\begin{center}
+  \onslide<2->\begin{tabular}{|c|c|c|}
+     \hline
+    \rowcolor{Apricot}Helyezés & Versenyző & Idő \\
+    \cellcolor{ForestGreen}1 & \cellcolor{Orchid}Ákos & \cellcolor{Aquamarine}1:11:210 \\
+    \cellcolor{Yellow}2  & \cellcolor{Mulberry}András & \cellcolor{Emerald}1:22:156  \\
+    \cellcolor{BurntOrange}3 & \cellcolor{Plum}Tomi  &  \cellcolor{PineGreen}1:30:155 \\
+    \hline
+    \end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Táblázat színezés}
+	\onslide<1->\begin{block}{Instukció}
+ 		A \verb!\usepackage[table]{xcolor}! implementálás után a documentclassban meg 				kell adnunk a következő sort:\textbf{"xcolor=table"}
+	\end{block} 
+	\onslide<2->\begin{exampleblock}{Példa}
+    {
+       \verb!\documentclass[aspectratio=1610,dvipsnames,xcolor=table]{beamer}!
+       \verb!\usepackage[table]{xcolor}!
+    }
+    \end{exampleblock}	
+    \begin{figure}[H]
+			 \onslide<2->\includegraphics[scale=0.8]{img/tablesetup.png}
+			 \onslide<2->\caption{Felállítás}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Táblázat színezés}
+\begin{center}
+\LaTeX-ben való alkalmazás
+\noindent
+{\color{Dandelion} \rule{\linewidth}{1mm}}
+\end{center}
+	\begin{figure}[H]
+		\onslide<2->\includegraphics[scale=0.8]{img/tablealkalmazas.png}
+			 
+	\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Vége}
+\begin{center}
+\Huge Köszönjük a figyelmet!
+\end{center}
+\end{frame}
+
 \end{document}
