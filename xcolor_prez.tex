@@ -18,29 +18,33 @@
 \usecolortheme{crane}
 
 
-\title{\textbf{xcolor} \LaTeX\ csomag}
-\author{Nagy Róbert és Bartók-Balogh Gábor}
-\institute{Miskolci Egyetem}
 
 \begin{document}
-    % titleslide
-    \frame[plain]{\maketitle}
+
+\title{Féléves beadandó}
+\author{Nagy Róbert és Bartók-Balogh Gábor}
+\date{\today}
+\subtitle{Prezentáció  \LaTeX-kel az \textbf{xcolor} csomagról}
+\institute{Miskolci Egyetem}
+
+ % titleslide
+\frame[plain]{\maketitle}
+
     
     % slide 1 
-    \begin{frame}[fragile]{Az xcolor csomag alapjai}
-        \begin{minipage}{0.6\textwidth}
-            \begin{itemize}
-                \item \onslide<1->\verb!\usepackage[<Opciók>]{xcolor}!
-                \item \onslide<2->Az xcolor lehetővá teszi, hogy
-                \item \onslide<2->Kiszínezzünk szöveget, táblázatot, rajzolt ábrákat, stb... 
-                \item \onslide<3->Használhatunk Névvel ellátott színeket
-                \item \onslide<4->Alapból 19 darab van.
-                \item \onslide<5->dvipsnames opcióval 68 darab
-                \item \onslide<5->svgnames opcióval 151 darab 
-                \item \onslide<5->x11names opcióval pedig 317 darab
-            \end{itemize}
-        \end{minipage} \hfill
-        \begin{minipage}{0.35\textwidth}    
+\begin{frame}[fragile]{Az xcolor csomag alapjai}
+    \begin{minipage}{0.6\textwidth}
+        \begin{itemize}
+           \item \onslide<1->\verb!\usepackage[<Opciók>]{xcolor}!
+           \item \onslide<2->Az xcolor lehetővé teszi, hogy kiszínezzünk 					                              szöveget,táblázatot, rajzolt ábrákat, stb... 
+           \item \onslide<3->Használhatunk névvel ellátott színeket
+           \item \onslide<4->Alapból 19 darab van.
+           \item \onslide<5->dvipsnames opcióval 68 darab
+           \item \onslide<5->svgnames opcióval 151 darab 
+           \item \onslide<5->x11names opcióval pedig 317 darab
+        \end{itemize}
+     \end{minipage} \hfill
+\begin{minipage}{0.35\textwidth}    
             \begin{figure}
                 \onslide<4->\includegraphics[scale=0.4]{img/szinek.png}
                 \onslide<4->\caption{Névvel ellátott színek}
