@@ -59,6 +59,7 @@
             \begin{itemize}
                 \item \onslide<1->Definiálhatunk saját színeket is.
                 \item \onslide<2->\verb!\definecolor{<név>}{<Mód>}{<Értékek>}!
+                \item \onslide<2->\verb!\providecolor{<név>}{<Mód>}{<Értékek>}! hasonló módon működik, de csak akkor definiálja a színt, ha az még nem létezik.
                 \item \onslide<3->A mód lehet
                 \begin{enumerate}
                     \item \onslide<4->rgb
@@ -67,20 +68,70 @@
                     \item \onslide<4->gray    
                 \end{enumerate}
                 Például:
-                \item \onslide<5->\verb!\definecolor{szin1}{rgb}{0.500, 0.188, 0.478}! \hfill \textcolor{szin1}{Szín1}
-                \item \onslide<5->\verb!\definecolor{szin2}{RGB}{196, 203, 133}! \hfill \textcolor{szin2}{Szín2}
-                \item \onslide<5->\verb!\definecolor{szin3}{cmyk}{0, 0.7771, 0.5437, 0.8656}! \hfill \textcolor{szin3}{Szín3}
-                \item \onslide<5->\verb!\definecolor{szin4}{gray}{0.5}! \hfill \textcolor{szin4}{Szín4}
+                \item \onslide<5->\verb!\definecolor{szin1}{rgb}{0.500, 0.188, 0.478}! \hfill \fcolorbox{black}{szin1}{ }
+                \item \onslide<5->\verb!\definecolor{szin2}{RGB}{196, 203, 133}! \hfill \fcolorbox{black}{szin2}{ }
+                \item \onslide<5->\verb!\definecolor{szin3}{cmyk}{0, 0.7771, 0.5437, 0.8656}! \hfill \fcolorbox{black}{szin3}{ }
+                \item \onslide<5->\verb!\definecolor{szin4}{gray}{0.5}! \hfill \fcolorbox{black}{szin4}{ }
             \end{itemize}                                                        
         \end{minipage} 
     \end{frame}
     
-    %slide 3
-    \begin{frame}[fragile]{color használata}
+    % slide 3
+    \colorlet{mygreen}{green!40!yellow}
+    \colorlet{mygreencomp}{-green!40!yellow} 
+
+    \begin{frame}[fragile]{Színek keverése}
+        \begin{itemize}
+            \item \onslide<1->Keveréssel létrehozott színek mentése: \verb!\colorlet{<új szín neve>}{<keverés>}!
+            \item \onslide<2->keverés kifejezés részei: $$<\text{százalék}>_1!<\text{szín}>_1!<\text{százalék}>_2!\ldots!<\text{százalék}>_n!<\text{szín}>_n$$
+            \item \onslide<2->például: \begin{verbatim}\colorlet{mygreen}{green!40!yellow}\end{verbatim} 
+            \item \onslide<3->40\% zöld 60\% sárgával keverve \fcolorbox{black}{mygreen}{ } 
+            \item \onslide<4->Komplementere: \fcolorbox{black}{mygreencomp}{ } \begin{verbatim}\colorlet{mygreen}{-green!40!yellow}\end{verbatim} 
+        \end{itemize}
+    \end{frame}
+    
+    % slide 4
+    \definecolorset{rgb}{x}{10}{red,1,0,0;green,0,1,0;blue,0,0,1}
+
+    \begin{frame}[fragile]{Színhalmazok}
+        \begin{itemize}
+            \item \onslide<1->Színhalmazok létrehozása: \verb!\definecolorset{<mód>}{<fej>}{<farok>}{<értékek>}!
+        \end{itemize}
+        \onslide<1-> \begin{exampleblock}{Példa: színhalmaz Definiálása}
+            \verb!\definecolorset{rgb}{x}{10}{red,1,0,0;green,0,1,0;blue,0,0,1}!
+        \end{exampleblock}
+            
+        \begin{itemize}
+            \item \onslide<2-> Az így definiált színekre \textit{xred10, xgreen10} és \textit{xblue10} névvel hivatkozhatunk
+            \item \onslide<3-> A \verb!\providecolorset{<mód>}{<fej>}{<farok>}{<értékek>}! hasonló módon működik, de csak akkor hozza létre a színeket, ha azok még nem léteznek.
+        \end{itemize}        
+    \end{frame}
+
+    % slide 5
+    \begin{frame}[fragile]{Színek tesztelése}
+        \begin{itemize}
+            \item \onslide<1-> A korábban definiált színek tesztelése Különböző módokban.
+        \end{itemize}
+        \onslide<1->\begin{verbatim}
+            \begin{testcolors}[rgb,cmyk,hsb,HTML,gray]
+                \testcolor{xred10}
+                \testcolor{xgreen10}
+                \testcolor{xblue10}
+            \end{testcolors}    
+        \end{verbatim}
+        \onslide<2->\begin{testcolors}[rgb,cmyk,hsb,HTML,gray]
+            \testcolor{xred10}
+            \testcolor{xgreen10}
+            \testcolor{xblue10}
+        \end{testcolors}
+    \end{frame}
+
+    %slide 6
+    \begin{frame}[fragile]{Color használata}
         \begin{minipage}{0.6\textwidth}
             \begin{itemize}            
                 \item \onslide<1-> színek használata: \verb!\color{<szín>}!
-                \item \onslide<2-> lehet használni: szövegnél, listáknál stb...    
+                \item \onslide<2-> Különböző helyeken lehet használni: szövegnél, listáknál stb...    
             \end{itemize}
         \end{minipage}
         \begin{minipage}{0.35\textwidth}
@@ -99,7 +150,7 @@
         \end{minipage}
     \end{frame}
        
-    %slide 4
+    %slide 7
     \begin{frame}[fragile]{szöveg szín és háttér beállítása}
         
         \begin{itemize}            
@@ -109,12 +160,11 @@
             \item \onslide<2-> például: \verb!\colorbox{yellow}{szöveg}! = \colorbox{yellow}{szöveg}
             \item \onslide<3-> szövegháttér + keret beállítása: \verb!\fcolorbox{<keret szine>}{<háttér szine>}{<szöveg>}!
             \item \onslide<3-> például: \verb!\fcolorbox{black}{yellow}{szöveg}! = \fcolorbox{black}{yellow}{szöveg}
-            \item \onslide<4-> Az egész oldal kiszinezése: \verb!\pagecolor{<szín>}!
+            \item \onslide<4-> Az oldal háttérszínének beállítása: \verb!\pagecolor{<szín>}!
         \end{itemize}
     \end{frame}
     
-
-    % slide 5
+    % slide 8
     \begin{frame}[fragile]{Táblázat színezés}
         \begin{center}
             A \verb!\usepackage[table]{xcolor}! package implementálása után tudunk táblázatban is hasonló dolgokat alkotni.
@@ -135,7 +185,7 @@
         \end{center}
     \end{frame}
 
-    % slide 6
+    % slide 9
     \begin{frame}[fragile]{Táblázat színezés}
         \onslide<1->\begin{block}{Instukció}
             A \verb!\usepackage[table]{xcolor}! implementálás után a documentclassban meg kell adnunk a következő sort:\textbf{"xcolor=table"}
@@ -152,7 +202,7 @@
         \end{figure}
     \end{frame}
 
-    % slide 7
+    % slide 10
     \begin{frame}[fragile]{Táblázat színezés}
     \begin{center}
         \LaTeX-ben való alkalmazás
@@ -164,28 +214,8 @@
         \end{figure}
     \end{frame}
 
-    
-
-    % slide 8
-    \colorlet{mygreen}{green!40!yellow}
-    \colorlet{mygreencomp}{-green!40!yellow} 
-
-    \begin{frame}[fragile]{Színek keverése}
-        \begin{itemize}
-            \item \onslide<1->Keveréssel létrehozott színek mentése: \verb!\colorlet{<új szín neve>}{<keverés>}!
-            \item \onslide<2->keverés kifejezés részei: $$<\text{százalék}>_1!<\text{szín}>_1!<\text{százalék}>_2!\ldots!<\text{százalék}>_n!<\text{szín}>_n$$
-            \item \onslide<2->például: \begin{verbatim}\colorlet{mygreen}{green!40!yellow}\end{verbatim} 
-            \item \onslide<3->40\% zöld 60\% sárgával keverve \fcolorbox{black}{mygreen}{ } 
-            \item \onslide<4->Komplementere: \fcolorbox{black}{mygreencomp}{ } \begin{verbatim}\colorlet{mygreen}{-green!40!yellow}\end{verbatim} 
-            
-
-
-        \end{itemize}
-    \end{frame}
     % slide 12
     \begin{frame}{Vége}
-        
         \centering \Huge Köszönjük a figyelmet!
-        
     \end{frame}
 \end{document}
