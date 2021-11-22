@@ -193,6 +193,7 @@
         \onslide<2->\begin{exampleblock}{Példa}
         {
             \verb!\documentclass[dvipsnames,xcolor=table]{beamer}!
+
             \verb!\usepackage[table]{xcolor}!
         }
         \end{exampleblock}	
@@ -209,9 +210,70 @@
         \noindent
         {\color{Dandelion} \rule{\linewidth}{1mm}}
     \end{center}
+    
         \begin{figure}[H]
-            \onslide<2->\includegraphics[scale=0.8]{img/tablealkalmazas.png}        
+           \onslide<2->\includegraphics[scale=0.8]{img/tablealkalmazas.png}        
         \end{figure}
+    \end{frame}
+
+    
+    % slide 11
+    \begin{frame}[fragile]{Színsorozatok Definiálása}
+        \definecolorseries{foo}{rgb}{last}{red}{blue}
+        \resetcolorseries[8]{foo}
+        \begin{itemize}
+            \item Színsorozatok definiálása: 
+            \item \begin{verbatim}\definecolorseries{<név>}{<sorozat módja>}{<metódus>}
+                    [<b-mód>]{<b-szín>}[s-mód]{s-szín}\end{verbatim}
+            \item A b-mód és b-szín a kezdő színt definiálják.
+            \item például: [rgb]\{1,0.5,0.5\}
+            \item Az s-mód és s-szín pedig meghatározza, hogy a lépésvektor hogyan lesz kiszámítva.
+            \item A metódus lehet: step, grad és last.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Példa}
+        \definecolorseries{foo}{rgb}{last}{red}{blue}
+        \resetcolorseries[8]{foo}
+        \begin{minipage}{0.5\textwidth}
+            \begin{itemize}
+                \item \onslide<1-> \verb!\definecolorseries{foo}{rgb}{last}{red}{blue}!
+                \item \onslide<1-> \verb!\resetcolorseries[8]{foo}!
+            \end{itemize}
+            
+
+        
+
+
+        
+        \begin{enumerate}
+            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
+            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
+            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
+            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
+            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
+            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
+            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
+            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
+        \end{enumerate}    
+        \end{minipage}
+        \begin{minipage}{0.45\textwidth}
+            \onslide<2->\begin{verbatim}
+
+
+\begin{enumerate}
+    \item \fcolorbox{black}{foo!!+}{ }
+    \item \fcolorbox{black}{foo!!+}{ }
+    \item \fcolorbox{black}{foo!!+}{ }
+    \item \fcolorbox{black}{foo!!+}{ }
+    \item \fcolorbox{black}{foo!!+}{ }
+    \item \fcolorbox{black}{foo!!+}{ }
+    \item \fcolorbox{black}{foo!!+}{ }
+    \item \fcolorbox{black}{foo!!+}{ }
+\end{enumerate}        
+            \end{verbatim}
+            
+        \end{minipage}
     \end{frame}
 
     % slide 12
