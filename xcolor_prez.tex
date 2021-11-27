@@ -7,6 +7,10 @@
 \usepackage[export]{adjustbox}
 \usepackage[table]{xcolor}
 
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamerfont{page number in head/foot}{size=\large}
+\setbeamertemplate{footline}[frame number]
 
 
 \definecolor{szin1}{rgb}{0.5, 0.188, 0.478}
@@ -17,7 +21,7 @@
 \usepackage{graphics}
 \usepackage{wrapfig}
 
-\usetheme{Malmoe}
+\usetheme{Pittsburgh}
 \usecolortheme{crane}
 
 \title{Féléves beadandó}
@@ -32,7 +36,7 @@
     \frame[plain]{\maketitle}
 
         
-        % slide 1 
+    % slide 1 
     \begin{frame}[fragile]{Az xcolor csomag alapjai}
         \begin{minipage}{0.6\textwidth}
             \begin{itemize}
@@ -54,26 +58,26 @@
     \end{frame}
 
     % slide 2
-    \begin{frame}[fragile]{Az xcolor csomag alapjai}
-        \begin{minipage}{0.8\textwidth}
-            \begin{itemize}
-                \item \onslide<1->Definiálhatunk saját színeket is.
-                \item \onslide<2->\verb!\definecolor{<név>}{<Mód>}{<Értékek>}!
-                \item \onslide<2->\verb!\providecolor{<név>}{<Mód>}{<Értékek>}! hasonló módon működik, de csak akkor definiálja a színt, ha az még nem létezik.
-                \item \onslide<3->A mód lehet
-                \begin{enumerate}
-                    \item \onslide<4->rgb
-                    \item \onslide<4->RGB
-                    \item \onslide<4->cmyk
-                    \item \onslide<4->gray    
-                \end{enumerate}
-                Például:
-                \item \onslide<5->\verb!\definecolor{szin1}{rgb}{0.500, 0.188, 0.478}! \hfill \fcolorbox{black}{szin1}{ }
-                \item \onslide<5->\verb!\definecolor{szin2}{RGB}{196, 203, 133}! \hfill \fcolorbox{black}{szin2}{ }
-                \item \onslide<5->\verb!\definecolor{szin3}{cmyk}{0, 0.7771, 0.5437, 0.8656}! \hfill \fcolorbox{black}{szin3}{ }
-                \item \onslide<5->\verb!\definecolor{szin4}{gray}{0.5}! \hfill \fcolorbox{black}{szin4}{ }
-            \end{itemize}                                                        
-        \end{minipage} 
+    \begin{frame}[fragile]{Saját színek}
+        \begin{itemize}
+            \item \onslide<1->Definiálhatunk saját színeket is.
+            \item \onslide<2->\verb!\definecolor{<név>}{<Mód>}{<Értékek>}!
+            \item \onslide<2->\verb!\providecolor{<név>}{<Mód>}{<Értékek>}! hasonló módon működik, de csak akkor definiálja a színt, ha az még nem létezik.
+            \item \onslide<3->A mód lehet
+            \begin{enumerate}
+                \item \onslide<4->rgb
+                \item \onslide<4->RGB
+                \item \onslide<4->cmyk
+                \item \onslide<4->gray    
+            \end{enumerate}
+        \end{itemize}                                                        
+        
+        \onslide<5->\begin{exampleblock}{\textcolor{white}{Példa}}
+            \onslide<5->\verb!\definecolor{szin1}{rgb}{0.500, 0.188, 0.478}! \hfill \fcolorbox{black}{szin1}{ }
+            \onslide<5->\verb!\definecolor{szin2}{RGB}{196, 203, 133}! \hfill \fcolorbox{black}{szin2}{ }
+            \onslide<5->\verb!\definecolor{szin3}{cmyk}{0, 0.7771, 0.5437, 0.8656}! \hfill \fcolorbox{black}{szin3}{ }
+            \onslide<5->\verb!\definecolor{szin4}{gray}{0.5}! \hfill \fcolorbox{black}{szin4}{ }    
+        \end{exampleblock}           
     \end{frame}
     
     % slide 3
@@ -83,11 +87,14 @@
     \begin{frame}[fragile]{Színek keverése}
         \begin{itemize}
             \item \onslide<1->Keveréssel létrehozott színek mentése: \verb!\colorlet{<új szín neve>}{<keverés>}!
-            \item \onslide<2->keverés kifejezés részei: $$<\text{százalék}>_1!<\text{szín}>_1!<\text{százalék}>_2!\ldots!<\text{százalék}>_n!<\text{szín}>_n$$
-            \item \onslide<2->például: \begin{verbatim}\colorlet{mygreen}{green!40!yellow}\end{verbatim} 
-            \item \onslide<3->40\% zöld 60\% sárgával keverve \fcolorbox{black}{mygreen}{ } 
-            \item \onslide<4->Komplementere: \fcolorbox{black}{mygreencomp}{ } \begin{verbatim}\colorlet{mygreen}{-green!40!yellow}\end{verbatim} 
+            \item \onslide<2->keverés kifejezés részei: $$<\text{Szín}>_1!<\text{Százalék}>_1!<\text{Szín}>_2!\ldots!<\text{Szín}>_n!<\text{Százalék}>_n$$
         \end{itemize}
+
+        \begin{exampleblock}{\textcolor{white}{Példa}}
+            \onslide<2-> \begin{verbatim}\colorlet{mygreen}{green!40!yellow}\end{verbatim} 
+            \onslide<3->40\% zöld 60\% sárgával keverve \fcolorbox{black}{mygreen}{ } 
+            \onslide<4->Komplementere: \fcolorbox{black}{mygreencomp}{ } \begin{verbatim}\colorlet{mygreen}{-green!40!yellow}\end{verbatim} 
+        \end{exampleblock}
     \end{frame}
     
     % slide 4
@@ -97,7 +104,7 @@
         \begin{itemize}
             \item \onslide<1->Színhalmazok létrehozása: \verb!\definecolorset{<mód>}{<fej>}{<farok>}{<értékek>}!
         \end{itemize}
-        \onslide<1-> \begin{exampleblock}{Példa: színhalmaz Definiálása}
+        \onslide<1-> \begin{exampleblock}{\textcolor{white}{Példa}}
             \verb!\definecolorset{rgb}{x}{10}{red,1,0,0;green,0,1,0;blue,0,0,1}!
         \end{exampleblock}
             
@@ -110,15 +117,19 @@
     % slide 5
     \begin{frame}[fragile]{Színek tesztelése}
         \begin{itemize}
-            \item \onslide<1-> A korábban definiált színek tesztelése Különböző módokban.
+            \item \onslide<1-> A színeket a \verb!\begin{\testcolors}[<módok>]! környezetben lehet tesztelni.
+            \item \onslide<1-> \verb!\testcolor{<Szín>}! használatával.
         \end{itemize}
-        \onslide<1->\begin{verbatim}
-            \begin{testcolors}[rgb,cmyk,hsb,HTML,gray]
-                \testcolor{xred10}
-                \testcolor{xgreen10}
-                \testcolor{xblue10}
-            \end{testcolors}    
-        \end{verbatim}
+        \onslide<1->\begin{exampleblock}{\textcolor{white}{A korábban definiált színek tesztelése Különböző módokban.}}
+            \begin{verbatim}
+                \begin{testcolors}[rgb,cmyk,hsb,HTML,gray]
+                    \testcolor{xred10}
+                    \testcolor{xgreen10}
+                    \testcolor{xblue10}
+                \end{testcolors}    
+            \end{verbatim}    
+        \end{exampleblock}
+        
         \onslide<2->\begin{testcolors}[rgb,cmyk,hsb,HTML,gray]
             \testcolor{xred10}
             \testcolor{xgreen10}
@@ -166,15 +177,14 @@
     
     % slide 8
     \begin{frame}[fragile]{Táblázat színezés}
-        \begin{center}
+        \onslide<1-2>\begin{center}
             A \verb!\usepackage[table]{xcolor}! package implementálása után tudunk táblázatban is hasonló dolgokat alkotni.
             \noindent
             {\color{Dandelion} \rule{\linewidth}{1mm}}
         \end{center}
-
         \vfill
-        \begin{center}
-            \onslide<2->\begin{tabular}{|c|c|c|}
+        \onslide<2-2>\begin{center}
+            \begin{tabular}{|c|c|c|}
                 \hline
                 \rowcolor{Apricot}Helyezés & Versenyző & Idő \\
                 \cellcolor{ForestGreen}1 & \cellcolor{Orchid}Ákos & \cellcolor{Aquamarine}1:11:210 \\
@@ -190,7 +200,7 @@
         \onslide<1->\begin{block}{Instukció}
             A \verb!\usepackage[table]{xcolor}! implementálás után a documentclassban meg kell adnunk a következő sort:\textbf{"xcolor=table"}
         \end{block} 
-        \onslide<2->\begin{exampleblock}{Példa}
+        \onslide<2->\begin{exampleblock}{\textcolor{white}{Példa}}
         {
             \verb!\documentclass[dvipsnames,xcolor=table]{beamer}!
 
@@ -219,7 +229,7 @@
     
     % slide 11
     \begin{frame}[fragile]{Színsorozatok Definiálása}
-        \definecolorseries{foo}{rgb}{last}{red}{blue}
+        \definecolorseries{foo}{rgb}{last}{orange}{green}
         \resetcolorseries[8]{foo}
         \begin{itemize}
             \item Színsorozatok definiálása: 
@@ -228,52 +238,73 @@
             \item A b-mód és b-szín a kezdő színt definiálják.
             \item például: [rgb]\{1,0.5,0.5\}
             \item Az s-mód és s-szín pedig meghatározza, hogy a lépésvektor hogyan lesz kiszámítva.
-            \item A metódus lehet: step, grad és last.
+            \item A metódus lehet: step, grad vagy last.
         \end{itemize}
     \end{frame}
 
-    \begin{frame}[fragile]{Példa}
-        \definecolorseries{foo}{rgb}{last}{red}{blue}
-        \resetcolorseries[8]{foo}
-        \begin{minipage}{0.5\textwidth}
+    \begin{frame}[fragile]
+        \begin{itemize}
+            \item \verb!\resetcolorseries[<Osztó>]{<Sorozat neve>}! Legalább egyszer használni kell. Visszaállítja a szín sorozatot és kiszámolja a lépésvektort. Az osztó egy nemnulla valós szám.
+            \item step és grad esetén \{s-szín\} meghatározza a \textit{grad} irányvektort
+            \item last esetén [s-mód]\{s-szín\} meghatározza a \textit{last} szín paramétervektort. (\textit{base} pedig a kezdő szín paramétervektort)    
+        \end{itemize}
+        \begin{center}
+            \includegraphics[scale=0.8]{img/lepesvektor.png}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}[fragile]{Színsorozatok használata}
+        
+        \definecolorseries{s1}{rgb}{step}[rgb]{.95,.85,.55}{.17,.47,.37}
+        \resetcolorseries[8]{s1}
+        \definecolorseries{s2}{rgb}{grad}[rgb]{.95,.85,.55}{3,11,17}
+        \resetcolorseries[8]{s2}
+        \definecolorseries{s3}{rgb}{last}{orange}{green}
+        \resetcolorseries[8]{s3}
             \begin{itemize}
-                \item \onslide<1-> \verb!\definecolorseries{foo}{rgb}{last}{red}{blue}!
-                \item \onslide<1-> \verb!\resetcolorseries[8]{foo}!
-            \end{itemize}
-            
+                \item \onslide<1-> \verb!\definecolorseries{s1}{rgb}{step}[rgb]{.95,.85,.55}{.17,.47,.37}!
+                \item \onslide<1-> \verb!\resetcolorseries[8]{s1}!
+                \item \onslide<2-> \verb!\definecolorseries{s2}{rgb}{grad}[rgb]{.95,.85,.55}{3,11,17}!
+                \item \onslide<2-> \verb!\resetcolorseries[8]{s2}!
+                \item \onslide<3-> \verb!\definecolorseries{s3}{rgb}{last}{orange}{green}!
+                \item \onslide<3-> \verb!\resetcolorseries[8]{s3}!
+                \item Sorozatok léptetése: <Sorozat név>!!+
+            \end{itemize}            
+    \end{frame}
 
+    \begin{frame}{Színsorozatok példa}
         
-
-
-        
-        \begin{enumerate}
-            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
-            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
-            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
-            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
-            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
-            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
-            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
-            \item \onslide<2->\fcolorbox{black}{foo!!+}{ }
-        \end{enumerate}    
-        \end{minipage}
-        \begin{minipage}{0.45\textwidth}
-            \onslide<2->\begin{verbatim}
-
-
-\begin{enumerate}
-    \item \fcolorbox{black}{foo!!+}{ }
-    \item \fcolorbox{black}{foo!!+}{ }
-    \item \fcolorbox{black}{foo!!+}{ }
-    \item \fcolorbox{black}{foo!!+}{ }
-    \item \fcolorbox{black}{foo!!+}{ }
-    \item \fcolorbox{black}{foo!!+}{ }
-    \item \fcolorbox{black}{foo!!+}{ }
-    \item \fcolorbox{black}{foo!!+}{ }
-\end{enumerate}        
-            \end{verbatim}
+        \begin{figure}
+            \begin{center}
+                \begin{subfigure}[c]{0.3\textwidth}
+                
+                    \rowcolors{1}{s1!!+}{s1!!+}
+                    \begin{tabular}{p{2cm}}
+                        \\ \\ \\ \\ \\ \\ \\ \\            
+                    \end{tabular}        
+                    \caption*{s1}
+                \end{subfigure}
+                \begin{subfigure}[c]{0.30\textwidth}
+                    
+                    \rowcolors{1}{s2!!+}{s2!!+}
+                    \begin{tabular}{p{2cm}}
+                        \\ \\ \\ \\ \\ \\ \\ \\            
+                    \end{tabular}        
+                    \caption*{s2}
+                \end{subfigure}
+                \begin{subfigure}[c]{0.3\textwidth}
+                    
+                    \rowcolors{1}{s3!!+}{s3!!+}
+                    \begin{tabular}{p{2cm}}
+                        \\ \\ \\ \\ \\ \\ \\ \\            
+                    \end{tabular}    
+                    \caption*{s3}
+                \end{subfigure}
+            \end{center}
             
-        \end{minipage}
+            
+        \end{figure}
+        
     \end{frame}
 
     % slide 12
