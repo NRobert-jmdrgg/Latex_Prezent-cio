@@ -73,10 +73,10 @@
         \end{itemize}                                                        
         
         \onslide<5->\begin{exampleblock}{\textcolor{white}{Példa}}
-            \onslide<5->\verb!\definecolor{szin1}{rgb}{0.500, 0.188, 0.478}! \hfill \fcolorbox{black}{szin1}{ }
-            \onslide<5->\verb!\definecolor{szin2}{RGB}{196, 203, 133}! \hfill \fcolorbox{black}{szin2}{ }
-            \onslide<5->\verb!\definecolor{szin3}{cmyk}{0, 0.7771, 0.5437, 0.8656}! \hfill \fcolorbox{black}{szin3}{ }
-            \onslide<5->\verb!\definecolor{szin4}{gray}{0.5}! \hfill \fcolorbox{black}{szin4}{ }    
+            \onslide<5->\verb!\definecolor{szin1}{rgb}{0.500, 0.188, 0.478}! \hfill \fcolorbox{black}{szin1}{ } \hspace{2cm}
+            \onslide<5->\verb!\definecolor{szin2}{RGB}{196, 203, 133}! \hfill \fcolorbox{black}{szin2}{ } \hspace{2cm}
+            \onslide<5->\verb!\definecolor{szin3}{cmyk}{0, 0.7771, 0.5437, 0.8656}! \hfill \fcolorbox{black}{szin3}{ } \hspace{2cm}
+            \onslide<5->\verb!\definecolor{szin4}{gray}{0.5}! \hfill \fcolorbox{black}{szin4}{ } \hspace{2cm}
         \end{exampleblock}           
     \end{frame}
     
@@ -254,57 +254,42 @@
     \end{frame}
 
     \begin{frame}[fragile]{Színsorozatok használata}
-        
         \definecolorseries{s1}{rgb}{step}[rgb]{.95,.85,.55}{.17,.47,.37}
         \resetcolorseries[8]{s1}
         \definecolorseries{s2}{rgb}{grad}[rgb]{.95,.85,.55}{3,11,17}
         \resetcolorseries[8]{s2}
         \definecolorseries{s3}{rgb}{last}{orange}{green}
         \resetcolorseries[8]{s3}
-            \begin{itemize}
-                \item \onslide<1-> \verb!\definecolorseries{s1}{rgb}{step}[rgb]{.95,.85,.55}{.17,.47,.37}!
-                \item \onslide<1-> \verb!\resetcolorseries[8]{s1}!
-                \item \onslide<2-> \verb!\definecolorseries{s2}{rgb}{grad}[rgb]{.95,.85,.55}{3,11,17}!
-                \item \onslide<2-> \verb!\resetcolorseries[8]{s2}!
-                \item \onslide<3-> \verb!\definecolorseries{s3}{rgb}{last}{orange}{green}!
-                \item \onslide<3-> \verb!\resetcolorseries[8]{s3}!
-                \item Sorozatok léptetése: <Sorozat név>!!+
-            \end{itemize}            
-    \end{frame}
-
-    \begin{frame}{Színsorozatok példa}
+        \verb!\definecolorseries{s1}{rgb}{step}[rgb]{.95,.85,.55}{.17,.47,.37}!
+        \verb!\resetcolorseries[8]{s1}!
+        \verb!\definecolorseries{s2}{rgb}{grad}[rgb]{.95,.85,.55}{3,11,17}!
+        \verb!\resetcolorseries[8]{s2}! \\ 
+        \verb!\definecolorseries{s3}{rgb}{last}{orange}{green}! \\
+        \verb!\resetcolorseries[8]{s3}!
         
-        \begin{figure}
-            \begin{center}
-                \begin{subfigure}[c]{0.3\textwidth}
+        \begin{figure}[b]    
+            \begin{subfigure}[!b]{0.2\textwidth}
+                \rowcolors{1}{s1!!+}{s1!!+}
+                \begin{tabular}{p{2cm}}
+                    s1 \\ \\ \\ \\ \\ \\ \\ \\            
+                \end{tabular}        
                 
-                    \rowcolors{1}{s1!!+}{s1!!+}
-                    \begin{tabular}{p{2cm}}
-                        \\ \\ \\ \\ \\ \\ \\ \\            
-                    \end{tabular}        
-                    \caption*{s1}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.30\textwidth}
-                    
-                    \rowcolors{1}{s2!!+}{s2!!+}
-                    \begin{tabular}{p{2cm}}
-                        \\ \\ \\ \\ \\ \\ \\ \\            
-                    \end{tabular}        
-                    \caption*{s2}
-                \end{subfigure}
-                \begin{subfigure}[c]{0.3\textwidth}
-                    
-                    \rowcolors{1}{s3!!+}{s3!!+}
-                    \begin{tabular}{p{2cm}}
-                        \\ \\ \\ \\ \\ \\ \\ \\            
-                    \end{tabular}    
-                    \caption*{s3}
-                \end{subfigure}
-            \end{center}
-            
-            
+            \end{subfigure}
+            \begin{subfigure}[!b]{0.2\textwidth}
+                \rowcolors{1}{s2!!+}{s2!!+}
+                \begin{tabular}{p{2cm}}
+                  s2  \\ \\ \\ \\ \\ \\ \\ \\            
+                \end{tabular}        
+                
+            \end{subfigure}
+            \begin{subfigure}[!b]{0.2\textwidth}
+                \rowcolors{1}{s3!!+}{s3!!+}
+                \begin{tabular}{p{2cm}}
+                    s3 \\ \\ \\ \\ \\ \\ \\ \\            
+                \end{tabular}        
+                
+            \end{subfigure}
         \end{figure}
-        
     \end{frame}
 
     % slide 12
